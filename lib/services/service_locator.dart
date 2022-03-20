@@ -7,3 +7,7 @@ final getIt = GetIt.instance;
 setupServiceLocator() {
   getIt.registerSingleton<HttpService>(DioHttpService());
 }
+
+Future resetServiceLocator() async {
+  await getIt.reset();
+}
