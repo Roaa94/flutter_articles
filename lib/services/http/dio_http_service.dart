@@ -1,12 +1,11 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter_articles/exceptions/http_exception.dart';
 import 'package:flutter_articles/services/http/http_service.dart';
 
 class DioHttpService implements HttpService {
-  @visibleForTesting
-  Dio? dio;
+  Dio get dio => Dio(baseOptions);
 
   @override
   String get baseUrl => 'https://dev.to/api/';
@@ -21,49 +20,60 @@ class DioHttpService implements HttpService {
       );
 
   @override
-  Future<dynamic> get({
+  Future<Response> get({
     required String endpoint,
     Map<String, dynamic>? queryParameters,
   }) async {
-    if (queryParameters != null) {
-      log('Request query parameters: $queryParameters');
-    }
+    log('Get Request to: ${dio.options.baseUrl + endpoint}\nparams: $queryParameters');
 
-    Dio _dio = dio ?? Dio(baseOptions);
-    log('Get Request to: ${_dio.options.baseUrl + endpoint}');
+    Response response = await dio.get(
+      endpoint,
+      queryParameters: queryParameters,
+    );
 
-    try {
-      Response response = await _dio.get(endpoint, queryParameters: queryParameters);
-    } on DioError catch (_) {
-      rethrow;
-    }
-  }
-
-  @override
-  Future<dynamic> post({
-    required String endpoint,
-    Map<String, dynamic>? queryParameters,
-  }) async {
-    try {
-      if (queryParameters != null) {
-        log('Request query parameters: $queryParameters');
-      }
-
-      Dio _dio = dio ?? Dio(baseOptions);
-      log('Get Request to: ${_dio.options.baseUrl + endpoint}');
-
-      Response response = await _dio.post(
-        endpoint,
-        queryParameters: queryParameters,
+    if (response.data == null || response.statusCode != 200) {
+      throw HttpException(
+        title: 'Http Error!',
+        statusCode: response.statusCode,
+        message: response.statusMessage,
       );
-    } on DioError catch (_) {
-      rethrow;
     }
+
+    return response;
   }
 
   @override
-  Future<dynamic> put() async {}
+  Future<Response> post({
+    required String endpoint,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    log('Get Request to: ${dio.options.baseUrl + endpoint}\nparams: $queryParameters');
+
+    Response response = await dio.post(
+      endpoint,
+      queryParameters: queryParameters,
+    );
+
+    if (response.data == null || response.statusCode != 200) {
+      throw HttpException(
+        title: 'Http Error!',
+        statusCode: response.statusCode,
+        message: response.statusMessage,
+      );
+    }
+
+    return response;
+  }
 
   @override
-  Future<dynamic> delete() async {}
+  Future delete() {
+    // TODO: implement delete
+    throw UnimplementedError();
+  }
+
+  @override
+  Future put() {
+    // TODO: implement put
+    throw UnimplementedError();
+  }
 }
