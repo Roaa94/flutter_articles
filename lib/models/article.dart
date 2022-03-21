@@ -10,7 +10,7 @@ class Article extends Equatable {
   final int commentsCount;
   final int positiveReactionsCount;
   final String publishedTimestamp;
-  final String coverImage;
+  final String? coverImage;
   final int readingTimeMinutes;
   final List<String> tags;
   final String? bodyHtml;
@@ -26,7 +26,7 @@ class Article extends Equatable {
     required this.commentsCount,
     required this.publishedTimestamp,
     required this.positiveReactionsCount,
-    required this.coverImage,
+    this.coverImage,
     required this.readingTimeMinutes,
     required this.tags,
     this.bodyHtml,
@@ -46,7 +46,7 @@ class Article extends Equatable {
       positiveReactionsCount: json['positive_reactions_count'],
       coverImage: json['cover_image'],
       readingTimeMinutes: json['reading_time_minutes'],
-      tags: json['tag_list'],
+      tags: List<String>.from(json['tag_list'].map((x) => x)),
       bodyHtml: json['body_html'],
       bodyMarkdown: json['body_markdown'],
       author: json['user'] == null ? null : Author.fromJson(json['user']),
