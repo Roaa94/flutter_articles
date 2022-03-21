@@ -8,15 +8,15 @@ class AppThemes {
       brightness: isDark ? Brightness.dark : Brightness.light,
       primaryColor: AppColors.primary,
       primarySwatch: AppColors.getMaterialColorFromColor(AppColors.primary),
-      scaffoldBackgroundColor: isDark ? AppColors.secondary : AppColors.grayLight,
+      scaffoldBackgroundColor: isDark ? AppColors.secondary : AppColors.white,
       cardColor: isDark ? AppColors.secondaryLight : AppColors.white,
       dividerColor: isDark ? AppColors.white : AppColors.secondary,
       textTheme: const TextTheme(
-        headline5: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w700),
+        headline5: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w700, height: 1.3),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: isDark ? AppColors.secondary : AppColors.white,
-        elevation: 0.5,
+        elevation: 0,
         centerTitle: false,
         toolbarHeight: 70,
         titleTextStyle: TextStyle(

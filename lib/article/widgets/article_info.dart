@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_articles/article/widgets/article_info_item.dart';
 import 'package:flutter_articles/models/article.dart';
-import 'package:flutter_articles/presentation/styles/app_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ArticleInfo extends StatelessWidget {
@@ -12,8 +11,8 @@ class ArticleInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
-      color: Theme.of(context).brightness == Brightness.light ? AppColors.grayLight : AppColors.white.withOpacity(0.1),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
+      decoration: BoxDecoration(border: Border(bottom: BorderSide(width: 0.5, color: Theme.of(context).dividerColor.withOpacity(0.3)))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

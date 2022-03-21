@@ -8,14 +8,11 @@ class ArticleCoverImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.only(topRight: Radius.circular(13), topLeft: Radius.circular(13)),
-      child: AppCachedNetworkImage(
-        imageUrl: url,
-        fit: BoxFit.cover,
-        height: 150,
-        width: double.infinity,
-      ),
+    return AppCachedNetworkImage(
+      imageUrl: url,
+      fit: BoxFit.cover,
+      height: 220,
+      width: double.infinity,
     );
   }
 }
