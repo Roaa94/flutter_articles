@@ -12,6 +12,7 @@ class AppThemes {
       cardColor: isDark ? AppColors.secondaryLight : AppColors.white,
       dividerColor: isDark ? AppColors.white : AppColors.secondary,
       textTheme: const TextTheme(
+        headline4: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w700, height: 1.3),
         headline5: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.w700, height: 1.3),
       ),
       appBarTheme: AppBarTheme(

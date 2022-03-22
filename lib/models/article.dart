@@ -46,7 +46,7 @@ class Article extends Equatable {
       positiveReactionsCount: json['positive_reactions_count'],
       coverImage: json['cover_image'],
       readingTimeMinutes: json['reading_time_minutes'],
-      tags: List<String>.from(json['tag_list'].map((x) => x)),
+      tags: List<String>.from((json['tag_list'] is String ? json['tags'] : json['tag_list']).map((x) => x)),
       bodyHtml: json['body_html'],
       bodyMarkdown: json['body_markdown'],
       author: json['user'] == null ? null : Author.fromJson(json['user']),

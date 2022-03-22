@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_articles/article/pages/article_page.dart';
 import 'package:flutter_articles/article/widgets/article_author.dart';
 import 'package:flutter_articles/article/widgets/article_cover_image.dart';
 import 'package:flutter_articles/article/widgets/article_info.dart';
@@ -12,14 +13,14 @@ class ArticleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        // borderRadius: BorderRadius.circular(15),
-        // border: Border.all(width: 1, color: Theme.of(context).dividerColor.withOpacity(0.5)),
-        // boxShadow: [BoxShadow(blurRadius: 8, color: AppColors.secondary.withOpacity(0.1))],
-      ),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute<dynamic>(
+            builder: (BuildContext context) => ArticlePage(id: article.id),
+          ),
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

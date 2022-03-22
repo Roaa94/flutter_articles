@@ -9,7 +9,7 @@ class ArticleTags extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 7),
       width: double.infinity,
       child: Wrap(
         spacing: 10,
