@@ -41,6 +41,7 @@ dependencies:
   cached_network_image: ^3.2.0
   shimmer: ^2.0.0
   font_awesome_flutter: ^9.2.0
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -52,10 +53,11 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
-  mocktail: ^0.2.0
   flutter_launcher_icons: ^0.9.2
   flutter_native_splash: ^2.0.5
   http_mock_adapter: ^0.3.2
+  mocktail: ^0.3.0
+  hive_test: ^1.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

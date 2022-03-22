@@ -1,17 +1,20 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_articles/services/http/dio_http_service.dart';
+import 'package:flutter_articles/services/storage/storage_service.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
 import '../../dummy-data/dummy_articles.dart';
 
 class MockDioHttpService extends DioHttpService {
-  DioAdapter dioAdapter = DioAdapter(
-    dio: Dio(
-      DioHttpService().baseOptions.copyWith(baseUrl: 'https://api.test/'),
-    ),
-  );
+  late DioAdapter dioAdapter;
 
-  MockDioHttpService() {
+  MockDioHttpService(StorageService storageService) : super(storageService) {
+    dioAdapter = DioAdapter(
+      dio: Dio(
+        DioHttpService(storageService).baseOptions.copyWith(baseUrl: 'https://api.test/'),
+      ),
+    );
+
     registerMockRequests(dioAdapter);
   }
 
