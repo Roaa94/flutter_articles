@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_articles/exceptions/http_exception.dart';
+import 'package:flutter_articles/models/http_response.dart';
 import 'package:flutter_articles/services/http/dio_http_service.dart';
 import 'package:flutter_articles/services/http/http_service.dart';
 import 'package:flutter_articles/services/storage/storage_service.dart';
@@ -18,7 +19,7 @@ void main() {
     });
 
     test('Returns correct Dio client', () async {
-      final Response response = await mockHttpService.get('successful-get-request-test');
+      final Response response = await mockHttpService.post('successful-get-request-test');
       StorageService mockStorageService = getMocks<StorageService>();
       expect(
         response.requestOptions.baseUrl,
@@ -32,9 +33,8 @@ void main() {
     });
 
     test('Successful Get Request', () async {
-      final Response response = await mockHttpService.get('successful-get-request-test');
+      final HttpResponse response = await mockHttpService.get('successful-get-request-test');
 
-      expect(response.statusCode, 200);
       expect(response.data, {'message': 'Success!'});
     });
 

@@ -19,7 +19,12 @@ class HomePage extends StatelessWidget {
         actions: const [AppBarFlutterLogo()],
       ),
       body: HttpPageWrapper<List<Article>>(
-        dataRequest: () async => await articleRepository.getArticles(tags: ['flutter', 'dart']),
+        dataRequest: (bool forceRefresh) async {
+          return await articleRepository.getArticles(
+            tags: ['flutter', 'dart'],
+            forceRefresh: forceRefresh,
+          );
+        },
         contentBuilder: (BuildContext context, List<Article> articles) {
           return ArticlesList(articles);
         },

@@ -1,11 +1,12 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_articles/models/http_response.dart';
 
 abstract class HttpService {
   String get baseUrl;
 
   Map<String, String> get headers;
 
-  Future<dynamic> get(
+  Future<HttpResponse<dynamic>> get(
     String endpoint, {
     Map<String, dynamic>? queryParameters,
     bool forceRefresh = false,

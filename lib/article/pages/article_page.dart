@@ -22,12 +22,15 @@ class ArticlePage extends StatelessWidget {
     HttpArticleRepository articleRepository = Provider.of<HttpArticleRepository>(context, listen: false);
 
     return Scaffold(
-      body: HttpPageWrapper(
-        dataRequest: () async => await articleRepository.getArticle(id: id),
-        contentBuilder: (BuildContext context, Article article) {
-          return SafeArea(
-            bottom: false,
-            child: SingleChildScrollView(
+      body: SafeArea(
+        bottom: false,
+        child: HttpPageWrapper(
+          dataRequest: (bool forceRefresh) async => await articleRepository.getArticle(
+            id: id,
+            forceRefresh: forceRefresh,
+          ),
+          contentBuilder: (BuildContext context, Article article) {
+            return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -47,9 +50,9 @@ class ArticlePage extends StatelessWidget {
                   const SizedBox(height: 100),
                 ],
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_articles/exceptions/http_exception.dart';
 import 'package:flutter_articles/models/cached_response.dart';
+import 'package:flutter_articles/models/http_response.dart';
 import 'package:flutter_articles/services/http/http_service.dart';
 import 'package:flutter_articles/services/storage/storage_service.dart';
 
@@ -28,29 +28,32 @@ class DioHttpService implements HttpService {
       );
 
   @override
-  Future<dynamic> get(
+  Future<HttpResponse<dynamic>> get(
     String endpoint, {
     Map<String, dynamic>? queryParameters,
     bool forceRefresh = false,
   }) async {
-    log('Get Request to: ${dio.options.baseUrl + endpoint} | params: $queryParameters');
+    log('Get Request to: ${dio.options.baseUrl + endpoint}${queryParameters != null ? ' | params: $queryParameters' : ''}');
 
     final dynamic cachedResponseData = getFromCache(endpoint, queryParameters: queryParameters);
     if (!forceRefresh && cachedResponseData != null) {
       log('Getting response from cache');
-      return cachedResponseData;
+      return HttpResponse(data: cachedResponseData);
     }
 
     try {
       final responseData = await getFromNetwork(endpoint, queryParameters: queryParameters);
-      return responseData;
-    } on SocketException catch (_) {
+      return HttpResponse(data: responseData);
+    } catch (e) {
       if (cachedResponseData != null) {
-        log('No Internet Connection! Getting response from cache');
-        return cachedResponseData;
+        log('An Error Occurred! Getting response from cache');
+        return HttpResponse(
+          data: cachedResponseData,
+          isOffline: true,
+        );
       } else {
         throw HttpException(
-          title: 'No internet connection and no cached response',
+          title: 'An Error Occurred and no cached response',
         );
       }
     }
@@ -81,7 +84,7 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  Future<dynamic>  getFromNetwork(String endpoint, {Map<String, dynamic>? queryParameters}) async {
+  Future<dynamic> getFromNetwork(String endpoint, {Map<String, dynamic>? queryParameters}) async {
     Response response = await dio.get(endpoint, queryParameters: queryParameters);
     log('Getting response from network');
 
