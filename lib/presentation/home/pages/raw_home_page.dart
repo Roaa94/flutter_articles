@@ -15,12 +15,14 @@ class RawHomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<RawHomePage> {
-  final StreamController<List<Article>> streamController = StreamController<List<Article>>();
+  final StreamController<List<Article>> streamController =
+      StreamController<List<Article>>();
   late HttpArticleRepository articleRepository;
 
   Future<void> _getArticles() async {
     try {
-      List<Article> articles = await articleRepository.getArticles(tags: ['flutter', 'dart']);
+      List<Article> articles =
+          await articleRepository.getArticles(tags: ['flutter', 'dart']);
       streamController.add(articles);
     } catch (e) {
       streamController.addError(e);
@@ -30,7 +32,8 @@ class _HomePageState extends State<RawHomePage> {
 
   @override
   void initState() {
-    articleRepository = Provider.of<HttpArticleRepository>(context, listen: false);
+    articleRepository =
+        Provider.of<HttpArticleRepository>(context, listen: false);
     _getArticles();
     super.initState();
   }
@@ -46,7 +49,8 @@ class _HomePageState extends State<RawHomePage> {
         onRefresh: _getArticles,
         child: StreamBuilder<List<Article>>(
           stream: streamController.stream,
-          builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
             if (snapshot.hasError) {
               return const Center(child: Text('An Error Occurred!'));
             } else {
@@ -55,7 +59,9 @@ class _HomePageState extends State<RawHomePage> {
                   return const Center(child: CircularProgressIndicator());
                 case ConnectionState.active:
                 case ConnectionState.done:
-                  if (!snapshot.hasData || (snapshot.data is List && (snapshot.data as List).isEmpty)) {
+                  if (!snapshot.hasData ||
+                      (snapshot.data is List &&
+                          (snapshot.data as List).isEmpty)) {
                     return const Center(child: Text('No Data'));
                   } else {
                     return ArticlesList(snapshot.data!);

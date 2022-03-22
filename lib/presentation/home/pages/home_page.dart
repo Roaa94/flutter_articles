@@ -11,7 +11,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HttpArticleRepository articleRepository = Provider.of<HttpArticleRepository>(context, listen: false);
+    HttpArticleRepository articleRepository =
+        Provider.of<HttpArticleRepository>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(

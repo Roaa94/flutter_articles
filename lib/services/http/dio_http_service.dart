@@ -19,11 +19,15 @@ class DioHttpService implements HttpService {
   String get baseUrl => 'https://dev.to/api/';
 
   @override
-  Map<String, String> headers = {'accept': 'application/json', 'content-type': 'application/json'};
+  Map<String, String> headers = {
+    'accept': 'application/json',
+    'content-type': 'application/json'
+  };
 
   BaseOptions get baseOptions => BaseOptions(
         baseUrl: baseUrl,
-        validateStatus: (status) => true, // To handle errors manually rather than by Dio
+        validateStatus: (status) => true,
+        // To handle errors manually rather than by Dio
         headers: headers,
       );
 
@@ -35,14 +39,16 @@ class DioHttpService implements HttpService {
   }) async {
     log('Get Request to: ${dio.options.baseUrl + endpoint}${queryParameters != null ? ' | params: $queryParameters' : ''}');
 
-    final dynamic cachedResponseData = getFromCache(endpoint, queryParameters: queryParameters);
+    final dynamic cachedResponseData =
+        getFromCache(endpoint, queryParameters: queryParameters);
     if (!forceRefresh && cachedResponseData != null) {
       log('Getting response from cache');
       return HttpResponse(data: cachedResponseData);
     }
 
     try {
-      final responseData = await getFromNetwork(endpoint, queryParameters: queryParameters);
+      final responseData =
+          await getFromNetwork(endpoint, queryParameters: queryParameters);
       return HttpResponse(data: responseData);
     } catch (e) {
       if (cachedResponseData != null) {
@@ -59,7 +65,8 @@ class DioHttpService implements HttpService {
     }
   }
 
-  String getRequestStorageKey(String endpoint, {Map<String, dynamic>? queryParameters}) {
+  String getRequestStorageKey(String endpoint,
+      {Map<String, dynamic>? queryParameters}) {
     String _storageKey = 'GET:${dio.options.baseUrl + endpoint}/';
     if (queryParameters != null) {
       _storageKey += '?';
@@ -71,12 +78,15 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  dynamic getFromCache(String endpoint, {Map<String, dynamic>? queryParameters}) {
-    final storageKey = getRequestStorageKey(endpoint, queryParameters: queryParameters);
+  dynamic getFromCache(String endpoint,
+      {Map<String, dynamic>? queryParameters}) {
+    final storageKey =
+        getRequestStorageKey(endpoint, queryParameters: queryParameters);
 
     if (storageService.has(storageKey)) {
       final rawCachedResponse = storageService.get(storageKey);
-      final CachedResponse cachedResponse = CachedResponse.fromJson(json.decode(json.encode(rawCachedResponse)));
+      final CachedResponse cachedResponse =
+          CachedResponse.fromJson(json.decode(json.encode(rawCachedResponse)));
       if (cachedResponse.isValid) {
         return cachedResponse.responseData;
       }
@@ -84,8 +94,10 @@ class DioHttpService implements HttpService {
   }
 
   @override
-  Future<dynamic> getFromNetwork(String endpoint, {Map<String, dynamic>? queryParameters}) async {
-    Response response = await dio.get(endpoint, queryParameters: queryParameters);
+  Future<dynamic> getFromNetwork(String endpoint,
+      {Map<String, dynamic>? queryParameters}) async {
+    Response response =
+        await dio.get(endpoint, queryParameters: queryParameters);
     log('Getting response from network');
 
     if (response.data == null || response.statusCode != 200) {
@@ -96,7 +108,8 @@ class DioHttpService implements HttpService {
       );
     }
 
-    final storageKey = getRequestStorageKey(endpoint, queryParameters: queryParameters);
+    final storageKey =
+        getRequestStorageKey(endpoint, queryParameters: queryParameters);
 
     CachedResponse cachedResponse = CachedResponse(
       responseData: response.data,

@@ -25,7 +25,8 @@ class ArticleCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ArticleAuthor(article),
-          if (article.coverImage != null) ArticleCoverImage(article.coverImage!),
+          if (article.coverImage != null)
+            ArticleCoverImage(article.coverImage!),
           if (article.coverImage != null) ArticleTags(tags: article.tags),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

@@ -20,7 +20,10 @@ class ArticleTags extends StatelessWidget {
             children: [
               Text(
                 '# ',
-                style: Theme.of(context).textTheme.bodyText2!.copyWith(color: AppColors.primary),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText2!
+                    .copyWith(color: AppColors.primary),
               ),
               Text(tags[index])
             ],

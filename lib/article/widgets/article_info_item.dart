@@ -22,7 +22,12 @@ class ArticleInfoItem extends StatelessWidget {
         const SizedBox(width: 5),
         Text(
           text,
-          style: TextStyle(color: Theme.of(context).textTheme.bodyText2!.color!.withOpacity(0.5)),
+          style: TextStyle(
+              color: Theme.of(context)
+                  .textTheme
+                  .bodyText2!
+                  .color!
+                  .withOpacity(0.5)),
         ),
       ],
     );

@@ -33,7 +33,10 @@ class AppCachedNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      placeholder: noLoader ? null : (_, __) => Center(child: loaderWidget ?? AppShimmer(width: width, height: height)),
+      placeholder: noLoader
+          ? null
+          : (_, __) => Center(
+              child: loaderWidget ?? AppShimmer(width: width, height: height)),
       imageUrl: imageUrl,
       width: width,
       height: height,

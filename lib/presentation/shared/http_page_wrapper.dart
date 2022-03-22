@@ -59,7 +59,9 @@ class _HttpPageWrapperState<T> extends State<HttpPageWrapper> {
                 return buildLoadingWidget();
               case ConnectionState.active:
               case ConnectionState.done:
-                if (!snapshot.hasData || (snapshot.data is List && (snapshot.data as List).isEmpty)) {
+                if (!snapshot.hasData ||
+                    (snapshot.data is List &&
+                        (snapshot.data as List).isEmpty)) {
                   return buildNoDataWidget();
                 } else {
                   return Column(
@@ -67,7 +69,8 @@ class _HttpPageWrapperState<T> extends State<HttpPageWrapper> {
                       OfflineBanner(
                         onRefresh: () => _getData(forceRefresh: true),
                       ),
-                      Expanded(child: buildContentWidget(context, snapshot.data!)),
+                      Expanded(
+                          child: buildContentWidget(context, snapshot.data!)),
                     ],
                   );
                 }
@@ -86,7 +89,8 @@ class _HttpPageWrapperState<T> extends State<HttpPageWrapper> {
   }
 
   Widget buildErrorWidget() {
-    return widget.errorWidget ?? const Center(child: Text('An Error Occurred!'));
+    return widget.errorWidget ??
+        const Center(child: Text('An Error Occurred!'));
   }
 
   Widget buildNoDataWidget() {
@@ -94,6 +98,7 @@ class _HttpPageWrapperState<T> extends State<HttpPageWrapper> {
   }
 
   Widget buildLoadingWidget() {
-    return widget.loadingWidget ?? const Center(child: CircularProgressIndicator());
+    return widget.loadingWidget ??
+        const Center(child: CircularProgressIndicator());
   }
 }

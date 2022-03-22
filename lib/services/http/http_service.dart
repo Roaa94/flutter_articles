@@ -18,10 +18,12 @@ abstract class HttpService {
   });
 
   @visibleForTesting
-  dynamic getFromCache(String endpoint, {Map<String, dynamic>? queryParameters});
+  dynamic getFromCache(String endpoint,
+      {Map<String, dynamic>? queryParameters});
 
   @visibleForTesting
-  dynamic getFromNetwork(String endpoint, {Map<String, dynamic>? queryParameters});
+  dynamic getFromNetwork(String endpoint,
+      {Map<String, dynamic>? queryParameters});
 
   Future<dynamic> put();
 

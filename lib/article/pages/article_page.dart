@@ -19,13 +19,15 @@ class ArticlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HttpArticleRepository articleRepository = Provider.of<HttpArticleRepository>(context, listen: false);
+    HttpArticleRepository articleRepository =
+        Provider.of<HttpArticleRepository>(context, listen: false);
 
     return Scaffold(
       body: SafeArea(
         bottom: false,
         child: HttpPageWrapper(
-          dataRequest: (bool forceRefresh) async => await articleRepository.getArticle(
+          dataRequest: (bool forceRefresh) async =>
+              await articleRepository.getArticle(
             id: id,
             forceRefresh: forceRefresh,
           ),
@@ -34,11 +36,13 @@ class ArticlePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  if (article.coverImage != null) ArticleCoverImage(article.coverImage!),
+                  if (article.coverImage != null)
+                    ArticleCoverImage(article.coverImage!),
                   ArticleInfo(article, isMin: true),
                   ArticleAuthor(article),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 17, vertical: 20),
                     child: Text(
                       article.title,
                       style: Theme.of(context).textTheme.headline5,

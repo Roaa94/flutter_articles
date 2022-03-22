@@ -49,7 +49,8 @@ class HttpArticleRepository with ChangeNotifier implements ArticleRepository {
   }
 
   @override
-  Future<Article> getArticle({required int id, bool forceRefresh = false}) async {
+  Future<Article> getArticle(
+      {required int id, bool forceRefresh = false}) async {
     final response = await httpService.get(
       'articles/$id',
       forceRefresh: forceRefresh,
