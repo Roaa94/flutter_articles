@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_articles/article/widgets/article_card.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_card.dart';
 import 'package:flutter_articles/models/article.dart';
 
 class ArticlesList extends StatelessWidget {

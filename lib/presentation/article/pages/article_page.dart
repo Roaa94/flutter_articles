@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_articles/article/widgets/article_author.dart';
-import 'package:flutter_articles/article/widgets/article_cover_image.dart';
-import 'package:flutter_articles/article/widgets/article_info.dart';
-import 'package:flutter_articles/article/widgets/article_tags.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_author.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_cover_image.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_info.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_tags.dart';
 import 'package:flutter_articles/models/article.dart';
 import 'package:flutter_articles/presentation/shared/app_html.dart';
 import 'package:flutter_articles/presentation/shared/http_page_wrapper.dart';

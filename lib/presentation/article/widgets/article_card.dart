@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_articles/article/pages/article_page.dart';
-import 'package:flutter_articles/article/widgets/article_author.dart';
-import 'package:flutter_articles/article/widgets/article_cover_image.dart';
-import 'package:flutter_articles/article/widgets/article_info.dart';
-import 'package:flutter_articles/article/widgets/article_tags.dart';
+import 'package:flutter_articles/presentation/article/pages/article_page.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_author.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_cover_image.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_info.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_tags.dart';
 import 'package:flutter_articles/models/article.dart';
 
 class ArticleCard extends StatelessWidget {

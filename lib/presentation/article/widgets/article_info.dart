@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_articles/article/widgets/article_info_item.dart';
+import 'package:flutter_articles/presentation/article/widgets/article_info_item.dart';
 import 'package:flutter_articles/models/article.dart';
 import 'package:flutter_articles/presentation/styles/app_colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
