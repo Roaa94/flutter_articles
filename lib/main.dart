@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_articles/home/pages/home_page.dart';
+import 'package:flutter_articles/presentation/home/pages/home_page.dart';
 import 'package:flutter_articles/presentation/styles/app_themes.dart';
 import 'package:flutter_articles/repositories/article_repository.dart';
 import 'package:flutter_articles/services/http/http_service.dart';

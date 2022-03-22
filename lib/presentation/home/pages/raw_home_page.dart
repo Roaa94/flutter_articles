@@ -7,14 +7,14 @@ import 'package:flutter_articles/presentation/shared/app_bar_flutter_logo.dart';
 import 'package:flutter_articles/repositories/article_repository.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class RawHomePage extends StatefulWidget {
+  const RawHomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<RawHomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<RawHomePage> {
   final StreamController<List<Article>> streamController = StreamController<List<Article>>();
   late HttpArticleRepository articleRepository;
 
