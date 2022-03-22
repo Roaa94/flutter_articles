@@ -48,15 +48,15 @@ class _HomePageState extends State<HomePage> {
           stream: streamController.stream,
           builder: (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
             if (snapshot.hasError) {
-              return const Text('Error');
+              return const Center(child: Text('An Error Occurred!'));
             } else {
               switch (snapshot.connectionState) {
                 case ConnectionState.waiting:
-                  return const Text('Loading');
+                  return const Center(child: CircularProgressIndicator());
                 case ConnectionState.active:
                 case ConnectionState.done:
                   if (!snapshot.hasData || (snapshot.data is List && (snapshot.data as List).isEmpty)) {
-                    return const Text('No Data');
+                    return const Center(child: Text('No Data'));
                   } else {
                     return ArticlesList(snapshot.data!);
                   }

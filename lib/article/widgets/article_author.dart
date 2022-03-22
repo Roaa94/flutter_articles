@@ -11,7 +11,7 @@ class ArticleAuthor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 8),
+      padding: const EdgeInsets.only(left: 17, right: 17, bottom: 20),
       child: Row(
         children: [
           if (article.author?.profileImage90 != null)
