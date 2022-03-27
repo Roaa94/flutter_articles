@@ -1,6 +1,5 @@
 # Flutter Articles
-
-Directory of Flutter Articles From The Dev.to Platform.
+### Directory of Flutter Articles From The Dev.to Platform.
 
 [Dev.to API Documentation](https://developers.forem.com/api)
 
