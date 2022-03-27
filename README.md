@@ -1,16 +1,15 @@
-# flutter_articles
+# Flutter Articles
 
-Directory of Flutter Articles From The Dev.to Platform
+Directory of Flutter Articles From The Dev.to Platform.
 
-## Getting Started
+[Dev.to API Documentation](https://developers.forem.com/api)
 
-This project is a starting point for a Flutter application.
+Created for the Flutter Festival London session
 
-A few resources to get you started if this is your first Flutter project:
+<a href="https://www.youtube.com/watch?v=h7Hjtj-iw_c" target="_blank">
+<img width="600" alt="Flutter API Integration With" src="https://user-images.githubusercontent.com/50345358/160282468-6e505abc-43cf-4848-90a1-5e662aa9a392.png">
+</a>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+---
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 
