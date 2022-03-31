@@ -1,6 +1,6 @@
 # Flutter Articles
 ### Directory of Flutter Articles From The Dev.to Platform.
-[![HitCount](https://hits.dwyl.com/roaa94/flutter_articles.svg?style=flat-square)](http://hits.dwyl.com/roaa94/flutter_articles)
+[![HitCount](https://hits.dwyl.com/roaa94/flutter_articles.svg?style=flat-square&show=unique)](http://hits.dwyl.com/roaa94/flutter_articles)
 
 [Dev.to API Documentation](https://developers.forem.com/api)
 
